@@ -1,5 +1,8 @@
 name: 'Build AppImage'
 description: 'Build an AppImage using appimage-builder'
+branding:
+  icon: 'package'
+  color: 'green'
 inputs:
   recipe:
     description: 'appimage-builder recipe file'
