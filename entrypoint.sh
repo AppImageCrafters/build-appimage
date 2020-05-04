@@ -1,5 +1,7 @@
 #!/bin/sh -l
 
+set -e
+
 appimage-builder --skip-test --recipe $1
 
 appimage_file=$(ls *.AppImage)
