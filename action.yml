@@ -1,0 +1,17 @@
+name: 'Build AppImage'
+description: 'Build an AppImage using appimage-builder'
+inputs:
+  recipe:
+    description: 'appimage-builder recipe file'
+    required: true
+    default: 'AppImageBuilder.yml'
+outputs:
+  appimage_file:
+    description: 'Generated AppImage file'
+  appimage_zsync_file:
+    description: 'Generated AppImage zsync file'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.recipe }}
