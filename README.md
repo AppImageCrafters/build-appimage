@@ -25,7 +25,7 @@ The generated AppImage zsync file if the update information was set.
 ## Example usage
 
 ```yaml
-uses: actions/build-appimage-action@master
+uses: AppImageCrafters/build-appimage-action@master
 with:
   recipe: 'AppImageBuilder.yml'
 ```
