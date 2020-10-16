@@ -8,6 +8,10 @@ inputs:
     description: 'appimage-builder recipe file'
     required: true
     default: 'AppImageBuilder.yml'
+  args:
+    description: 'appimage-builder arguments'
+    required: false
+    default: ''
 outputs:
   appimage_file:
     description: 'Generated AppImage file'
@@ -17,4 +21,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.args }}
+    - --recipe
     - ${{ inputs.recipe }}
