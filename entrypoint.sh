@@ -2,6 +2,17 @@
 
 set -e
 
+# Install requested appimage-builder version
+if [ ! -z ${BUILDER_VERSION+x} ]; then
+    sudo -H pip3 uninstall -y appimage-builder
+    sudo -H pip3 install --upgrade appimage-builder==${BUILDER_VERSION}
+fi
+
+# Move to the requeste workdir
+if [ ! -z ${BUILDER_WORKDIR+x} ]; then
+    cd ${BUILDER_WORKDIR}
+fi
+
 appimage-builder --skip-test $@
 
 appimage_file=$(ls *.AppImage 2>/dev/null || echo "")
