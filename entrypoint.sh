@@ -5,7 +5,7 @@ set -e
 # Install requested appimage-builder version
 if [ ! -z ${BUILDER_VERSION+x} ]; then
     sudo -H pip3 uninstall -y appimage-builder
-    sudo -H pip3 install --upgrade appimage-builder==${BUILDER_VERSION}
+    sudo -H pip3 install --upgrade git+https://github.com/AppImageCrafters/appimage-builder.git@${BUILDER_VERSION}
 fi
 
 # Move to the requeste workdir
