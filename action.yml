@@ -11,16 +11,11 @@ inputs:
   args:
     description: 'appimage-builder arguments'
     required: false
-    default: ''
-outputs:
-  appimage_file:
-    description: 'Generated AppImage file'
-  appimage_zsync_file:
-    description: 'Generated AppImage zsync file'
+    default: '--skip-test'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: appimagecrafters/appimage-builder:0.8.2
   args:
-    - ${{ inputs.args }}
-    - --recipe
-    - ${{ inputs.recipe }}
+    - appimage-builder
+    - '--recipe=${{ inputs.recipe }}' 
+    - '${{ inputs.args }}'

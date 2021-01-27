@@ -1,8 +1,6 @@
-# build-appimage-action
+# build-appimage
 
-This action creates an AppImage using appimage-builder. Check the 
-[appimage-builder documentation](https://appimage-builder.readthedocs.io/) for more details about writing the recipe
-files.
+Create an AppImage using appimage-builder. Check the  [appimage-builder documentation](https://appimage-builder.readthedocs.io/) for more details about writing the recipe files.
 
 ## Inputs
 
@@ -11,21 +9,17 @@ files.
 
 **Required** The appimage-builder recipe file.
 
+### `args`
 
-## Outputs
+**Optional** The appimage-builder execution args.
 
-### `appimage_file`
-
-The generated AppImage file
-
-### `appimage_zsync_file`
-
-The generated AppImage zsync file if the update information was set.
 
 ## Example usage
 
 ```yaml
-uses: AppImageCrafters/build-appimage-action@master
-with:
-  recipe: 'AppImageBuilder.yml'
+uses: AppImageCrafters/build-appimage@master
+  with:
+    recipe: "./appimage-demo-qt5/AppImageBuilder.yml"
+  env:
+    UPDATE_INFO: gh-releases-zsync|AppImageCrafters|appimage-demo-qt5|latest|*x86_64.AppImage.zsync
 ```
