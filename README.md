@@ -1,8 +1,6 @@
-# build-appimage-action
+# build-appimage
 
-This action creates an AppImage using appimage-builder. Check the 
-[appimage-builder documentation](https://appimage-builder.readthedocs.io/) for more details about writing the recipe
-files.
+Create an AppImage using appimage-builder. Check the  [appimage-builder documentation](https://appimage-builder.readthedocs.io/) for more details about writing the recipe files.
 
 ## Inputs
 
@@ -10,6 +8,8 @@ files.
 ### `recipe`
 
 **Required** The appimage-builder recipe file.
+
+**Optional** The appimage-builder execution args.
 
 
 ## Outputs
@@ -25,7 +25,7 @@ The generated AppImage zsync file if the update information was set.
 ## Example usage
 
 ```yaml
-uses: AppImageCrafters/build-appimage-action@master
+uses: AppImageCrafters/build-appimage@1.3
 with:
   recipe: 'AppImageBuilder.yml'
 ```

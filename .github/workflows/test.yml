@@ -1,0 +1,31 @@
+on: [push]
+
+jobs:
+  run_test:
+    runs-on: ubuntu-18.04
+    name: Test Action 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: "AppImageCrafters/appimage-demo-qt5"
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build Qt5 Application
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y qt5-default qtdeclarative5-dev cmake git
+          git clone https://github.com/AppImageCrafters/appimage-demo-qt5.git
+          cd appimage-demo-qt5
+          cmake . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+          make -j`nproc`  install DESTDIR=../AppDir
+      - name: Build AppImage
+        uses: ./
+        with:
+          recipe: "./appimage-demo-qt5/AppImageBuilder.yml"
+        env:
+          UPDATE_INFO: gh-releases-zsync|AppImageCrafters|appimage-demo-qt5|latest|*x86_64.AppImage.zsync
+      - uses: actions/upload-artifact@v2
+        with:
+          name: AppImage
+          path: './*.AppImage*'
