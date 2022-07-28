@@ -14,7 +14,7 @@ inputs:
     default: '--skip-test'
 runs:
   using: 'docker'
-  image: docker://appimagecrafters/appimage-builder:0.8.2
+  image: docker://appimagecrafters/appimage-builder:1.1.0
   args:
     - appimage-builder
     - '--recipe=${{ inputs.recipe }}' 
