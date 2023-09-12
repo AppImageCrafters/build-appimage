@@ -11,7 +11,7 @@ inputs:
   args:
     description: 'appimage-builder arguments'
     required: false
-    default: '--skip-test'
+    default: '--skip-tests'
 runs:
   using: 'docker'
   image: docker://appimagecrafters/appimage-builder:1.1.0
