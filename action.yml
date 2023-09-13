@@ -11,11 +11,10 @@ inputs:
   args:
     description: 'appimage-builder arguments'
     required: false
-    default: '--skip-test'
+    default: '--skip-tests'
 runs:
-  using: 'docker'
-  image: docker://appimagecrafters/appimage-builder:1.1.0
-  args:
-    - appimage-builder
-    - '--recipe=${{ inputs.recipe }}' 
-    - '${{ inputs.args }}'
+  using: composite
+  steps:
+    - uses: docker://appimagecrafters/appimage-builder:1.1.0
+      with:
+        args: appimage-builder --recipe=${{inputs.recipe}} ${{inputs.args}}
